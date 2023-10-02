@@ -25,7 +25,8 @@ export default function TextForm(params) {
   };
 
   return (
-    <div>
+    <>
+    <div className="container">
       <h1>{params.heading}</h1>
       <div>
         <textarea
@@ -47,6 +48,15 @@ export default function TextForm(params) {
       </button>
       {/* <button className="btn btn-primary" onClick={onClickHandeler}></button> */}
     </div>
+
+    <div className="container">
+        <h1>Your Text Summary: </h1>
+        <p>{text.split(" ").length} words and {text.length} characters.</p>
+        <p>time taken to read: {0.008 * text.split(" ").length} minutes</p>
+        <h2>Preview</h2>
+        <p>{text}</p>
+    </div>
+    </>
   );
 }
 
