@@ -12,27 +12,32 @@ export default function TextForm(params) {
   const onClickUpHandeler = () => {
     // console.log("onclick Uppercase Handler called!");
     setText(text.toUpperCase());
+    params.showAlert("Converted to Uppercase", "success")
   };
 
   const onClickLowHandeler = () => {
     // console.log("onclick Lowercase Handler called!");
     setText(text.toLowerCase());
+    params.showAlert("Converted to Lowercase", "success")
   };
 
   const onClickClearHandeler = () => {
     // console.log("onclick Clear Handler called!");
     setText("");
+    params.showAlert("Text Cleared", "success")
   };
 
   const selectionHaandeler = () => {
     var data = document.getElementById("exampleFormControlTextarea1");
     data.select();
+    
   };
 
   const onClickCopyHandeler = () => {
     var data = document.getElementById("exampleFormControlTextarea1");
     data.select();
     navigator.clipboard.writeText(data.value);
+    params.showAlert("Text Copied to Clipboard", "success")
   };
 
 
@@ -72,7 +77,7 @@ export default function TextForm(params) {
         <p>{text.split(" ").length} words and {text.length} characters.</p>
         <p>time taken to read: {0.008 * text.split(" ").length} minutes</p>
         <h2>Preview</h2>
-        <p>{text}</p>
+        <p>{text.length>0?text:"Enter your Text above to preview"}</p>
     </div>
     </>
   );
