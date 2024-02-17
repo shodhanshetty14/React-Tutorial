@@ -4,6 +4,11 @@ import Alert from "./components/Alert";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import React, { useState } from "react";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
 
 
 function App() {
@@ -48,6 +53,7 @@ function App() {
 
   return (
     <>
+    <BrowserRouter>
     <div style = {myStyle}>
       <Navbar title="TextUtils" />
       <Alert alert ={alert} />
@@ -55,11 +61,18 @@ function App() {
                 {btnText}
               </button>
       {/* <Navbar /> */}
-      <div className="container" style={myStyle}>
-        <TextForm showAlert={showAlert} heading="Enter the Text to analyze" newStyle={myStyle} />
+      <Routes>
+      <Route exact path="/" element={        <div className="container" style={myStyle}>
+          <TextForm showAlert={showAlert} heading="Enter the Text to analyze" newStyle={myStyle} />
+        </div>} />
+        {/* <div className="container" style={myStyle}>
+          <TextForm showAlert={showAlert} heading="Enter the Text to analyze" newStyle={myStyle} />
+        </div> */}
+      <Route exact path="/about" element={<About />} />
+        {/* <About newStyle={myStyle} /> */}
+      </Routes>
       </div>
-      <About newStyle={myStyle} />
-      </div>
+      </BrowserRouter>
     </>
   );
 }

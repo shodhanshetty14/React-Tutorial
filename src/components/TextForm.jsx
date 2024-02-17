@@ -4,6 +4,27 @@ import PropTypes from "prop-types";
 export default function TextForm(params) {
   const [text, setText] = useState("Enter Text here");
 
+  const wordCount = () =>{
+    let words = text.split(" ");
+    // while ("" in words){
+    //   let ind = words.indexOf("");
+    //   words.splice(ind,1);
+    //   console.log(words)
+    // }
+    // console.log(words)
+
+    if (words.length<=1 && words[0] === ""){
+      return 0;
+    }
+    if (words[0]==="" && words.length> 1){
+      return words.length -1
+    }
+    if (words[-1]===""){
+      return words.length -1
+    }
+    return words.length;
+  }
+
   const onChangeHandeler = (event) => {
     // console.log("onChangeHandeler called");
     setText(event.target.value);
@@ -74,7 +95,8 @@ export default function TextForm(params) {
 
     <div className="container" style={params.newStyle}>
         <h1>Your Text Summary: </h1>
-        <p>{text.split(" ").length} words and {text.length} characters.</p>
+        {/* <p>{text.split(" ").length} words and {text.length} characters.</p> */}
+        <p>{wordCount()} words and {text.length} characters.</p>
         <p>time taken to read: {0.008 * text.split(" ").length} minutes</p>
         <h2>Preview</h2>
         <p>{text.length>0?text:"Enter your Text above to preview"}</p>
