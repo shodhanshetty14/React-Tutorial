@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 export default function TextForm(params) {
   const [text, setText] = useState("Enter Text here");
 
-  const wordCount = () =>{
-    let words = text.split(" ");
+  // const wordCount = () =>{
+    // let words = text.split(" ");
     // while ("" in words){
     //   let ind = words.indexOf("");
     //   words.splice(ind,1);
@@ -13,17 +13,17 @@ export default function TextForm(params) {
     // }
     // console.log(words)
 
-    if (words.length<=1 && words[0] === ""){
-      return 0;
-    }
-    if (words[0]==="" && words.length> 1){
-      return words.length -1
-    }
-    if (words[-1]===""){
-      return words.length -1
-    }
-    return words.length;
-  }
+  //   if (words.length<=1 && words[0] === ""){
+  //     return 0;
+  //   }
+  //   if (words[0]==="" && words.length> 1){
+  //     return words.length -1
+  //   }
+  //   if (words[-1]===""){
+  //     return words.length -1
+  //   }
+  //   return words.length;
+  // }
 
   const onChangeHandeler = (event) => {
     // console.log("onChangeHandeler called");
@@ -78,16 +78,16 @@ export default function TextForm(params) {
           rows="8"
         ></textarea>
       </div> 
-      <button  className="btn btn-primary mx-2" onClick={onClickUpHandeler}>
+      <button  className="btn btn-primary mx-2 my-1" onClick={onClickUpHandeler}>
         Convert to upperCase
       </button>
-      <button  className="btn btn-primary mx-2" onClick={onClickLowHandeler}>
+      <button  className="btn btn-primary mx-2 my-1" onClick={onClickLowHandeler}>
         Convert to lowerCase
       </button>
-      <button  className="btn btn-primary mx-2" onClick={onClickClearHandeler}>
+      <button  className="btn btn-primary mx-2 my-1" onClick={onClickClearHandeler}>
         Clear
       </button>
-      <button  className="btn btn-primary mx-2" onClick={onClickCopyHandeler}>
+      <button  className="btn btn-primary mx-2 my-1" onClick={onClickCopyHandeler}>
         Copy Text
       </button>
 
@@ -95,8 +95,8 @@ export default function TextForm(params) {
 
     <div className="container" style={params.newStyle}>
         <h1>Your Text Summary: </h1>
-        {/* <p>{text.split(" ").length} words and {text.length} characters.</p> */}
-        <p>{wordCount()} words and {text.length} characters.</p>
+        <p>{text.split(" ").filter((elem)=>{return elem !==0}).length} words and {text.length} characters.</p>
+        {/* <p>{wordCount()} words and {text.length} characters.</p> */}
         <p>time taken to read: {0.008 * text.split(" ").length} minutes</p>
         <h2>Preview</h2>
         <p>{text.length>0?text:"Enter your Text above to preview"}</p>

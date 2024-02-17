@@ -56,10 +56,10 @@ function App() {
     <BrowserRouter>
     <div style = {myStyle}>
       <Navbar title="TextUtils" />
-      <Alert alert ={alert} />
       <button className="btn btn-primary " onClick={toggelMode}>
                 {btnText}
               </button>
+      <Alert alert ={alert} />
       {/* <Navbar /> */}
       <Routes>
       <Route exact path="/" element={        <div className="container" style={myStyle}>
